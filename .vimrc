@@ -20,7 +20,6 @@ set gp=git\ grep\ -n
 set backupcopy=yes
 set mouse=a
 set laststatus=2
-packadd! matchit
 set clipboard=unnamed
 
 " ===== Key Bindings =====
@@ -29,8 +28,8 @@ let mapleader = " "
 " copy to system clipboard in visual mode
 " vnoremap <D-c> "+y
 " Map ⌘+v to paste from system clipboard
-" inoremap <D-v> <C-r>+
-" cnoremap <D-v> <C-r>+
+"inoremap <D-v> <C-r>+
+"cnoremap <D-v> <C-r>+
 
 " buffer movements
 map <F2> :bp<CR>
@@ -89,6 +88,8 @@ vnoremap <Right> <Nop>
 " Use arrow keys for resizing in Normal mode
 nnoremap <Left>  :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
+nnoremap <Up> :horizontal resize +2<CR>
+nnoremap <Down> :horizontal resize -2<CR>
 
 " Run a script
 nnoremap <leader>r :!./run.sh<CR>
@@ -138,7 +139,7 @@ endfunc
 nnoremap <leader>n :call ToggleNumber()<CR>
 
 " Toggle between showing invisible characters
-functio ToggleInvisibleChar()
+function! ToggleInvisibleChar()
     if (&list == 1)
         set nolist
     else
@@ -148,7 +149,7 @@ endfunc
 nnoremap <leader>o :call ToggleInvisibleChar()<CR>
 
 " Toggle between showing spell error
-functio ToggleSpell()
+function! ToggleSpell()
     if (&spell == 1)
         set nospell
     else
