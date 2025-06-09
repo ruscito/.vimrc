@@ -25,6 +25,9 @@ set clipboard=unnamed
 " ===== Key Bindings =====
 let mapleader = " "
 
+" add and go up
+inoremap <silent> <C-j> <ESC>0O
+
 " copy to system clipboard in visual mode
 " vnoremap <D-c> "+y
 " Map ⌘+v to paste from system clipboard
@@ -40,12 +43,9 @@ map <F3> :bn<CR>
 imap <F3> <Esc>:bn<CR>
 tmap <F3> <C-W>:bn<CR>
 
-map <F4> :bd<CR>
-imap <F4> <Esc>:bd<CR>
-
-map <F5> :ls<CR>
-imap <F5> <Esc>:ls<CR>
-tmap <F5> <C-W>:ls<CR>
+map <F4> :ls<CR>
+imap <F4> <Esc>:ls<CR>
+tmap <F4> <C-W>:ls<CR>
 
 
 " Go to previous/next quick fix result (for example, useful for going through :grep or
