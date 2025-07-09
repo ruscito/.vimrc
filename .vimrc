@@ -1,4 +1,5 @@
 set number
+set relativenumber
 syntax on
 
 filetype plugin indent on
@@ -6,10 +7,13 @@ set tabstop=4
 set shiftwidth=4
 set wildmenu
 set wildoptions=pum
-set hidden
+set nohidden
+" set autowrite
 set visualbell
 set t_vb=
 set cursorline
+highlight CursorLineNr cterm=bold ctermfg=red
+highlight CursorLine cterm=none ctermbg=none
 set nospell
 set is
 set ignorecase
@@ -22,8 +26,16 @@ set mouse=a
 set laststatus=2
 set clipboard=unnamed
 
+" no bracket highlight
+set noshowmatch
+let g:loaded_matchparen = 1
+hi MatchParen ctermbg=none ctermfg=none
+
 " ===== Key Bindings =====
 let mapleader = " "
+
+" change jump matching pair
+nnoremap \ %
 
 " add and go up
 inoremap <silent> <C-j> <ESC>0O
