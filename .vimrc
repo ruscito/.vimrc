@@ -1,6 +1,6 @@
-"Rev 0.1
-"01 GEN 2026
-"Agostino Ruscito
+" Rev 0.2
+" 01 GEN 2026
+" Agostino Ruscito
 
 set number
 set norelativenumber
@@ -43,7 +43,9 @@ let mapleader = " "
 nnoremap \ %
 
 " add and go up
-inoremap <silent> nm <ESC>0O
+" inoremap <silent> nm <ESC>0O
+inoremap <silent> nm <ESC>o<ESC>kO
+inoremap <silent> nm2 <ESC>o<CR><ESC>2kO
 
 " buffer movements
 map <F2> :bp<CR>
