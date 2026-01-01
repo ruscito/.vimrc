@@ -1,5 +1,6 @@
+# Rev 0.1
 set number
-set relativenumber
+set norelativenumber
 syntax on
 
 filetype plugin indent on
@@ -8,7 +9,7 @@ set shiftwidth=4
 set wildmenu
 set wildoptions=pum
 set nohidden
-" set autowrite
+set autowrite
 set visualbell
 set t_vb=
 set cursorline
@@ -25,6 +26,7 @@ set backupcopy=yes
 set mouse=a
 set laststatus=2
 set clipboard=unnamed
+"colorscheme desert
 
 " no bracket highlight
 set noshowmatch
@@ -38,13 +40,7 @@ let mapleader = " "
 nnoremap \ %
 
 " add and go up
-inoremap <silent> <C-j> <ESC>0O
-
-" copy to system clipboard in visual mode
-" vnoremap <D-c> "+y
-" Map ⌘+v to paste from system clipboard
-"inoremap <D-v> <C-r>+
-"cnoremap <D-v> <C-r>+
+inoremap <silent> nm <ESC>0O
 
 " buffer movements
 map <F2> :bp<CR>
@@ -67,9 +63,16 @@ imap <F7> <Esc>:cp<CR>
 map <F8> :cn<CR>
 imap <F8> <Esc>:cn<CR>
 
+" Change the indentation of the higlighted code
+xnoremap q <gv
+xnoremap <TAB> >gv
+
+" To open a terminal on top
 map <F12> :term<CR>
 imap <F12> <Esc>:term<CR>
 tmap <F12> <C-W>:term<CR>
+nnoremap <Tab> <C-w>w
+tnoremap <Tab> <C-\><C-n><C-w>w
 
 " Better split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -103,19 +106,23 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :horizontal resize +2<CR>
 nnoremap <Down> :horizontal resize -2<CR>
 
-" Run a script
+" Run script
 nnoremap <leader>r :!./run.sh<CR>
+
+" Build script
+nnoremap <leader>b :!./build.sh<CR>
 
 " Split management
 nnoremap <leader>vs :vsplit<CR>
 nnoremap <leader>hs :split<CR>
 
-" Fast
+" Save open buffer
 noremap <leader>w :w<CR>
+noremap <leader>q :q<CR>
 
-" ========== Plug ==========
-call plug#begin('~/.vim/plugged')
-call plug#end()
+" Half page up and down
+nnoremap J <C-d>zz
+nnoremap K <C-u>zz
 
 " ========== Functions =============
 function! StatuslineMode()
@@ -205,3 +212,10 @@ autocmd FIleType lua highlight luaFunc ctermfg=gray cterm=NONE
 autocmd FIleType lua highlight luaStringDelimiter ctermfg=green cterm=NONE
 autocmd FIleType lua highlight luaString ctermfg=green cterm=NONE
 autocmd FIleType lua highlight luaNumber ctermfg=green cterm=NONE
+
+" retore file and position
+" autocmd VimEnter * if argc() == 0 | execute 'edit ' . v:oldfiles[0] | endif
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   execute "normal! g`\"zz" |
+      \ endif
