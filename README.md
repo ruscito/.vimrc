@@ -54,9 +54,9 @@ A minimal yet powerful Vim configuration focused on productivity and efficient n
 - `Tab` - Cycle through windows (works in terminal mode)
 
 #### Insert Mode
-- `jk` - Exit insert mode (alternative to `Esc`)
-- `nm` - Add lines above and below starting point. Move cursor above starting point
-- `nm2` - Add 2 below starting point. Move cursor above starting point
+- `nm` -  Move cursor above starting point
+- `nm1` - Add 1 line above and one line below starting point. Move cursor above starting point
+- `nm2` - Add 1 line above and two line below starting point. Move cursor above starting point
 
 #### Visual Mode
 - `q` - Decrease indentation

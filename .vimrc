@@ -43,8 +43,8 @@ let mapleader = " "
 nnoremap \ %
 
 " add and go up
-" inoremap <silent> nm <ESC>0O
-inoremap <silent> nm <ESC>o<ESC>kO
+inoremap <silent> nm <ESC>0O
+inoremap <silent> nm1 <ESC>o<ESC>kO
 inoremap <silent> nm2 <ESC>o<CR><ESC>2kO
 
 " buffer movements
