@@ -1,9 +1,10 @@
-" Rev 0.3
-" 02 GEN 2026
+" Rev 0.4
+" 26 GEN 2026
 " Agostino Ruscito
 
 set number
 set norelativenumber
+set noswapfile
 syntax on
 
 filetype plugin indent on
@@ -16,8 +17,6 @@ set autowrite
 set visualbell
 set t_vb=
 set cursorline
-highlight CursorLineNr cterm=bold ctermfg=red
-highlight CursorLine cterm=none ctermbg=none
 set nospell
 set is
 set ignorecase
@@ -29,7 +28,7 @@ set backupcopy=yes
 set mouse=a
 set laststatus=2
 set clipboard=unnamed
-"colorscheme desert
+colorscheme gruber-darker
 
 " no bracket highlight
 set noshowmatch
@@ -58,11 +57,10 @@ imap <F3> <Esc>:bn<CR>
 tmap <F3> <C-W>:bn<CR>
 nnoremap <leader>3 :bn<CR>
 
-map <F4> :ls<CR>
-imap <F4> <Esc>:ls<CR>
-tmap <F4> <C-W>:ls<CR>
-nnoremap <leader>4 :ls<CR>
-
+map <F4> :ls<CR>:b<space>
+imap <F4> <Esc>:ls<CR>:b<space>
+tmap <F4> <C-W>:ls<CR>:b<space>
+nnoremap <leader>4 :ls<CR>:b<space>
 
 " Go to previous/next quick fix result (for example, useful for going through :grep or
 " :vimgrep results)
@@ -212,14 +210,6 @@ set statusline +=%1*%=%5l%*             "current line
 set statusline +=%2*/%L%*               "total lines
 set statusline +=%1*%4v\ %*             "virtual column number
 set statusline +=%2*0x%04B\ %*          "character under cursor
-
-" ====== Color adjustment for lua file =====
-" :echo synIDattr(synID(line('.'), col('.'), 1), 'name')
-autocmd FIleType lua highlight luaFunction ctermfg=yellow cterm=NONE
-autocmd FIleType lua highlight luaFunc ctermfg=gray cterm=NONE
-autocmd FIleType lua highlight luaStringDelimiter ctermfg=green cterm=NONE
-autocmd FIleType lua highlight luaString ctermfg=green cterm=NONE
-autocmd FIleType lua highlight luaNumber ctermfg=green cterm=NONE
 
 " retore file and position
 " autocmd VimEnter * if argc() == 0 | execute 'edit ' . v:oldfiles[0] | endif

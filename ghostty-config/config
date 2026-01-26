@@ -1,0 +1,17 @@
+# font-family = "JetBrains Mono"
+font-family = Iosevka Fixed
+font-size = 18
+
+# This Font
+# font-style = Thin
+# font-thicken = true
+
+# Or this
+font-style = Light
+
+font-feature = -liga
+font-feature = -calt
+
+cursor-color = #ffdd33
+cursor-text = #181818
+cursor-style = block
