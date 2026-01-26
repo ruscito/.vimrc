@@ -1,5 +1,5 @@
-" Rev 0.2
-" 01 GEN 2026
+" Rev 0.3
+" 02 GEN 2026
 " Agostino Ruscito
 
 set number
@@ -51,14 +51,17 @@ inoremap <silent> nm2 <ESC>o<CR><ESC>2kO
 map <F2> :bp<CR>
 imap <F2> <Esc>:bp<CR>
 tmap <F2> <C-W>:bp<CR>
+nnoremap <leader>2 :bp<CR>
 
 map <F3> :bn<CR>
 imap <F3> <Esc>:bn<CR>
 tmap <F3> <C-W>:bn<CR>
+nnoremap <leader>3 :bn<CR>
 
 map <F4> :ls<CR>
 imap <F4> <Esc>:ls<CR>
 tmap <F4> <C-W>:ls<CR>
+nnoremap <leader>4 :ls<CR>
 
 
 " Go to previous/next quick fix result (for example, useful for going through :grep or
