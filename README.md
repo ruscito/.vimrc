@@ -1,129 +1,134 @@
-# Vim Configuration
+# Vim Configuration (Rev 0.4)
 
-A minimal yet powerful Vim configuration focused on productivity and efficient navigation.
+**Last Updated:** January 26, 2026
 
-## Features
+This configuration is a lightweight, development-focused Vim setup featuring custom status lines, window management optimization, and build script integration. It prioritizes a clutter-free environment (no swap files, no initial visual bells) and workflow efficiency.
 
-### Editor Settings
-- Line numbers enabled with bold red cursor line number
-- 4-space indentation with smart tab handling
-- Case-insensitive search (smart case enabled)
-- Incremental search highlighting
-- Auto-save on buffer switch
-- Mouse support enabled
-- Visual bell (no audio alerts)
-- System clipboard integration
+## 📂 Repository Contents
 
-### Key Bindings
+In addition to the `.vimrc`, this repository includes the following directories:
 
-**Leader Key:** `Space`
+* **`ghostty-config/`**: Contains the custom configuration files for the Ghostty terminal emulator.
+* **`vim-colors/`**: Contains the `gruber-darker.vim` colorscheme, which is the required theme for this configuration.
 
-#### Navigation
-- `\` - Jump to matching pair (alternative to `%`)
-- `J` - Half page down with cursor centered
-- `K` - Half page up with cursor centered
-- `Tab` - Cycle through windows
-- `Ctrl+h/j/k/l` - Navigate between splits
+## 📋 Requirements & Dependencies
 
-#### Buffer Management
-- `F2` - Previous buffer
-- `F3` - Next buffer
-- `F4` - List buffers
+* **Git:** Required for the custom `grep` command setting (`gp`).
+* **Vim 8+:** Recommended for full compatibility with job/terminal features.
+* **Colorscheme:** The `gruber-darker` theme (included in the `vim-colors` folder) must be installed in your vim colors directory.
 
-#### Quick Fix Navigation
-- `F7` - Previous quick fix result
-- `F8` - Next quick fix result
+## ⚙️ Core Settings
 
-#### Split Management
-- `<leader>vs` - Vertical split
-- `<leader>hs` - Horizontal split
-- `<leader>c` - Close window
-- Arrow keys - Resize splits (left/right for vertical, up/down for horizontal)
+* **Leader Key:** `<Space>`
+* **Indentation:** 4 spaces (Tab and Shift width), auto-indent enabled.
+* **Search:** Case insensitive unless capital letters are used (`ignorecase`, `smartcase`).
+* **Safety:** `autowrite` is enabled (saves on buffer switch), `noswapfile` (swap files disabled), `backupcopy=yes`.
+* **Visuals:** Syntax highlighting on, Line numbers enabled, Cursor line highlighted, Match parentheses disabled.
+* **System:** Clipboard sharing enabled (`unnamed`), Mouse support enabled.
+* **Clean on Save:** Automatically strips trailing whitespace when saving a file.
+* **Restore Position:** Automatically returns the cursor to the last known position when reopening a file.
 
-#### File Explorer
-- `<leader>e` - Open file explorer
-- `<leader>l` - Open file explorer in left split (Lexplore)
+## ⌨️ Key Mappings
 
-#### File Operations
-- `<leader>w` - Save file
-- `<leader>q` - Quit
+### General & Files
+| Key | Mode | Description |
+| :--- | :--- | :--- |
+| `<Space> w` | Normal | Save buffer. |
+| `<Space> q` | Normal | Quit window. |
+| `<Space> e` | Normal | Open Netrw (File Explorer). |
+| `<Space> l` | Normal | Open Netrw (Lexplore - vertical split). |
+| `<Space> c` | Normal | Close current window. |
+| `<Space> /` | Normal | Clear search highlighting. |
+| `\` | Normal | Jump to matching pair (Remapped from `%`). |
 
-#### Terminal
-- `F12` - Open terminal
-- `Esc Esc` - Exit terminal mode
-- `Tab` - Cycle through windows (works in terminal mode)
+### Navigation & Scrolling
+| Key | Mode | Description |
+| :--- | :--- | :--- |
+| `J` | Normal | Scroll half-page down and center screen. |
+| `K` | Normal | Scroll half-page up and center screen. |
+| `jk` | Insert | **Exit Insert Mode** (Alternative to Esc). |
+| `<Ctrl> + h/j/k/l` | Normal | Navigate between split windows. |
+| `<Arrow Keys>` | Normal | Resize split windows (Vertical/Horizontal). |
+| `<Arrow Keys>` | Visual | Disabled (forces use of hjkl). |
 
-#### Insert Mode
-- `nm` -  Move cursor above starting point
-- `nm1` - Add 1 line above and one line below starting point. Move cursor above starting point
-- `nm2` - Add 1 line above and two line below starting point. Move cursor above starting point
+### Buffers & Splits
+| Key | Mode | Description |
+| :--- | :--- | :--- |
+| `F2` / `<Space> 2` | All | Go to **Previous** buffer. |
+| `F3` / `<Space> 3` | All | Go to **Next** buffer. |
+| `F4` / `<Space> 4` | All | List buffers and prompt to switch. |
+| `<Space> vs` | Normal | Vertical Split. |
+| `<Space> hs` | Normal | Horizontal Split. |
 
-#### Visual Mode
-- `q` - Decrease indentation
-- `Tab` - Increase indentation
-- Arrow keys disabled (encourages proper Vim movement)
+### Development & Build
+| Key | Mode | Description |
+| :--- | :--- | :--- |
+| `<Space> r` | Normal | Execute `./run.sh`. |
+| `<Space> b` | Normal | Execute `./build.sh`. |
+| `F7` | All | Previous Quickfix result (e.g., after grep). |
+| `F8` | All | Next Quickfix result. |
 
-#### Utility
-- `<leader>/` - Clear search highlighting
-- `<leader>n` - Toggle between absolute and relative line numbers
-- `<leader>o` - Toggle invisible characters
-- `<leader>x` - Toggle spell checking
-- `<leader>r` - Run `./run.sh` script
-- `<leader>b` - Run `./build.sh` script
+### Terminal
+| Key | Mode | Description |
+| :--- | :--- | :--- |
+| `F12` | All | Open Terminal. |
+| `<Tab>` | Normal | Switch window. |
+| `<Tab>` | Terminal | Switch window (exit terminal focus). |
+| `<Esc><Esc>` | Terminal | Exit Terminal insert mode. |
 
-### Custom Features
+### Editing Helpers
+| Key | Mode | Description |
+| :--- | :--- | :--- |
+| `q` | Visual | Decrease indent (remapped from `<`). |
+| `<Tab>` | Visual | Increase indent (remapped from `>`). |
+| `nm` | Insert | Insert new line above cursor. |
+| `nm1` | Insert | Insert new line below cursor. |
+| `nm2` | Insert | Insert blank line below and jump up 2 lines. |
 
-#### Status Line
-Custom status line showing:
-- Current mode (NORMAL, INSERT, VISUAL, etc.)
-- Buffer number
-- File format
-- File type
-- Full file path
-- Modified flag
-- Current line/total lines
-- Column number
-- Character under cursor (hex value)
+## 🛠️ Toggles & Functions
 
-#### Automatic Functions
-- **Strip Trailing Whitespace:** Automatically removes trailing whitespace on save
-- **Restore Position:** Opens files at the last cursor position
-- **Syntax Highlighting:** Special color adjustments for Lua files
+These mappings toggle specific settings on/off dynamically.
 
-### Additional Configuration
-- Wildmenu enabled with popup menu
-- No bracket matching highlight
-- Git grep integration (`git grep -n`)
-- Backup files preserved during write
+| Key | Description |
+| :--- | :--- |
+| `<Space> n` | Toggle between **Relative** and **Absolute** line numbers. |
+| `<Space> o` | Toggle **Invisible Characters** (show tabs/newlines). |
+| `<Space> x` | Toggle **Spell Check**. |
 
-## Installation
+## 📊 Custom Status Line
 
-1. Backup your existing `.vimrc` if you have one:
-   ```bash
-   mv ~/.vimrc ~/.vimrc.backup
-   ```
+The configuration includes a custom functional status line featuring:
+* Current Mode (Normal, Visual, Insert, etc.).
+* Buffer Number.
+* File Format & Type.
+* Full File Path.
+* Modified Flag.
+* Current Line / Total Lines.
+* Hex code of the character under the cursor.
 
-2. Copy this configuration to your home directory:
-   ```bash
-   cp vimrc ~/.vimrc
-   ```
+## 📥 Installation
 
-3. Open Vim and you're ready to go!
+1.  **Backup existing configuration:**
+    ```bash
+    mv ~/.vimrc ~/.vimrc.backup
+    ```
 
-## Customization
+2.  **Install Colorscheme:**
+    Ensure the directory exists and copy the included theme:
+    ```bash
+    mkdir -p ~/.vim/colors
+    cp vim-colors/gruber-darker.vim ~/.vim/colors/
+    ```
 
-This configuration is designed to be minimal and easily customizable. Key areas you might want to modify:
+3.  **Install Vim Configuration:**
+    Copy the `.vimrc` to your home directory:
+    ```bash
+    cp .vimrc ~/
+    ```
 
-- **Color scheme:** Uncomment `colorscheme desert` or choose your preferred scheme
-- **Leader key:** Change `let mapleader = " "` to use a different leader key
-- **Indentation:** Modify `tabstop` and `shiftwidth` for different spacing
-- **Status line colors:** Adjust the `hi User1-5` definitions for different colors
-
-## Requirements
-
-- Vim 8.0 or later recommended
-- Git (for git grep functionality)
-
-## License
-
-Feel free to use and modify this configuration as needed.
+4.  **Install Ghostty Configuration:**
+    Copy the configuration files to your generic config directory:
+    ```bash
+    mkdir -p ~/.config/ghostty
+    cp -r ghostty-config/* ~/.config/ghostty/
+    ```
